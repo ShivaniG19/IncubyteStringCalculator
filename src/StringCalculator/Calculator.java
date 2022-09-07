@@ -1,5 +1,6 @@
 package StringCalculator;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -8,9 +9,34 @@ import StringCalculator.Calculator;
 
 public class Calculator {
 	public static int add(String numbers) {
-		return 0;
+		String[] num = split(numbers);
+		int size=num.length;
+		throwExceptionIfAnyNegativeValue(num, size);
+		return calculateSum(num, size);
 	}
-	
+	public static void throwExceptionIfAnyNegativeValue(String[] num, int size) {
+		ArrayList<String> neg = new ArrayList<String>();
+		//Checking for the negative number in String
+		for(int i=0; i<size; i++) {
+			if(toInteger(num[i])<0) {
+				neg.add(num[i]);
+			}
+		}
+		if(neg.size()>0) {
+			throw new RuntimeException("negatives not allowed: " + String.join(", ",neg));
+		}
+	}
+	public static int calculateSum(String[] num, int size) {
+		int sum=0;
+		for(int i=0; i<size; i++){
+			sum = sum + toInteger(num[i]);
+		}
+		return sum;
+	}
+	public static int toInteger(String numbers) {
+		return Integer.parseInt(numbers);
+	}
+
 	public static String[] split(String numbers) {
 		if(numbers.isEmpty()) {
 			return new String[0];
