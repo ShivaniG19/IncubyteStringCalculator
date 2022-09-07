@@ -1,10 +1,15 @@
 package StringCalculator;
 
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import StringCalculator.Calculator;
+
 public class Calculator {
-	
+	public static int add(String numbers) {
+		return 0;
+	}
 	
 	public static String[] split(String numbers) {
 		if(numbers.isEmpty()) {
@@ -30,5 +35,13 @@ public class Calculator {
 		String customDelim = m.group(1);
 		String num=m.group(2);
 		return num.split(Pattern.quote(customDelim));
+	}
+	
+	public static void main(String [] args) {
+		Scanner sc = new Scanner(System.in);
+		String str = sc.nextLine();
+		
+		System.out.println(Calculator.add(str));
+	sc.close();
 	}
 }
