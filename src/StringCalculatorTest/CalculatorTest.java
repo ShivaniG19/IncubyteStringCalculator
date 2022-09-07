@@ -50,4 +50,25 @@ public class CalculatorTest {
 	public void shouldAllowRegexCharAsCustomDelimiter() {
 		assertEquals(3,Calculator.add("//.\n1.2"));
 	}
+	
+    //Task-5
+	//Throw exception for negative numbers
+	@Test
+	public void shouldThrowExceptionForNegativeNumbers() {
+		try{
+			Calculator.add("1,-2,3");
+			fail("Exception expected");
+		}catch(RuntimeException e) {
+		}
+	}
+  //Exception message should have negative number
+	@Test
+	public void shouldHaveNegativeNumbersInException() {
+		try{
+			Calculator.add("-1,-2,3");
+			fail("Exception expected");
+		}catch(RuntimeException e) {
+			assertEquals("negatives not allowed: -1, -2",e.getMessage());
+		}
+	}
 }
