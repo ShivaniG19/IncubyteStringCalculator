@@ -31,10 +31,23 @@ public class CalculatorTest {
 		assertEquals(6,Calculator.add("1,2,3"));
 	}
 	
-	//Test-3
+	//Task-3
    // Allow \n as delimiter along-with comma
 	@Test
 	public void shouldAllowNewLineAsDelimiter() {
 		assertEquals(6,Calculator.add("1\n2,3"));
+	}
+	
+	//Task-4
+   //Allow custom delimiter by checking // in beginning of first line
+	@Test
+	public void shouldAllowCustomDelimiter() {
+		assertEquals(3,Calculator.add("//;\n1;2"));
+	}
+
+	// Custom Delimiter can be custom Regex Character
+	@Test
+	public void shouldAllowRegexCharAsCustomDelimiter() {
+		assertEquals(3,Calculator.add("//.\n1.2"));
 	}
 }
